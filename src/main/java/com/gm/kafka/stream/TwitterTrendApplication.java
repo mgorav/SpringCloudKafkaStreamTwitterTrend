@@ -25,6 +25,7 @@ import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
@@ -130,15 +131,16 @@ public class TwitterTrendApplication {
     }
 
     @RestController
-    public static class CountsRestController {
+    @RequestMapping(value = "/trending/tweet")
+    public static class TwitterTrendController {
 
         private final QueryableStoreRegistry registry;
 
-        public CountsRestController(QueryableStoreRegistry registry) {
+        public TwitterTrendController(QueryableStoreRegistry registry) {
             this.registry = registry;
         }
 
-        @GetMapping("/counts")
+        @GetMapping("/bycount")
         Map<String, Long> counts() {
             ReadOnlyKeyValueStore<String, Long> store = registry.getQueryableStoreType(TWEET_MSG_COUNTS_MV, QueryableStoreTypes.keyValueStore());
 
