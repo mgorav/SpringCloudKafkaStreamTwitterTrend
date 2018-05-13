@@ -3,8 +3,6 @@ package com.gm.kafka.stream;
 import com.gm.kafka.stream.model.TweetMessage;
 import com.gm.kafka.stream.model.TweetWindow;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.kafka.streams.KeyValue;
 import org.apache.kafka.streams.kstream.KStream;
 import org.apache.kafka.streams.kstream.KTable;
@@ -117,9 +115,8 @@ public class TwitterTrendApplication {
     }
 
     @Component
+    @Slf4j
     public static class TweeMessageCountSink {
-
-        private final Log log = LogFactory.getLog(getClass());
 
         @StreamListener
         public void process(@Input(TWEET_MSG_COUNTS_IN) KTable<String, Long> counts) {
