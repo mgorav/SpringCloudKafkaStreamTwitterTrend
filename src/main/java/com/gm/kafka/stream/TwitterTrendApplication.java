@@ -2,6 +2,7 @@ package com.gm.kafka.stream;
 
 import com.gm.kafka.stream.model.TweetMessage;
 import com.gm.kafka.stream.model.TweetWindow;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.streams.KeyValue;
 import org.apache.kafka.streams.kstream.KStream;
@@ -65,25 +66,27 @@ public class TwitterTrendApplication {
 
         @Override
         public void run(ApplicationArguments args) throws Exception {
+
             try {
+                final LocalDateTimeHolder startDate = new LocalDateTimeHolder(getLocalDateTime("Sun Feb 28 15:23:48 +0000 2010"));
                 Runnable runnable = () -> {
                     try {
-                        LocalDateTime startDate = getLocalDateTime("Sun Feb 28 15:23:48 +0000 2010");
-                        int randomSec = current().nextInt(0, 59);
-                        startDate = startDate.withSecond(randomSec);
 
-                        String messageText = "tweet msg " + valueOf(current().nextLong(1, 10));
+                        int randomSec = current().nextInt(0, 59);
+                        LocalDateTime newStartDate = startDate.localDateTime;
+
+                        String messageText = "tweet msg " + valueOf(current().nextLong(0, 51));
 
 
                         TweetMessage tweetMessage = new TweetMessage(randomUUID().toString(),
                                 messageText,
-                                new TweetWindow(startDate, startDate.withSecond(randomSec + 1)));
+                                new TweetWindow(newStartDate, newStartDate.withSecond(randomSec + 1)));
 
                         Message<TweetMessage> message = withPayload(tweetMessage)
                                 .setHeader(MESSAGE_KEY, tweetMessage.getId().getBytes())
                                 .build();
 
-
+                        startDate.localDateTime = newStartDate;
                         this.out.send(message);
                     } catch (Exception e) {
                         log.error("Exception while creating TwitterMessage:", e);
@@ -174,4 +177,9 @@ interface TweetMessageBinding {
 
     @Input(TWEET_MSG_IN)
     KStream<String, TweetMessage> tweetMessageEventsIn();
+}
+
+@AllArgsConstructor
+class LocalDateTimeHolder {
+    LocalDateTime localDateTime;
 }
