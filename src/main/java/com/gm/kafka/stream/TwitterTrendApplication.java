@@ -108,7 +108,7 @@ public class TwitterTrendApplication {
         public KStream<String, Long> process(@Input(TWEET_MSG_IN) KStream<String, TweetMessage> events) {
             return events
                     .map((key, value) -> {
-                        return new KeyValue<>(value.getText(), "0");
+                        return new KeyValue<>(value.getText(), "blah");
                     })
                     .groupByKey()
                     .count(Materialized.as(TWEET_MSG_COUNTS_MV))
