@@ -115,6 +115,7 @@ public class TwitterTrendApplication {
                     .groupByKey()
                     .count(Materialized.as(TWEET_MSG_COUNTS_MV))
                     .toStream();
+
         }
     }
 
@@ -155,7 +156,9 @@ public class TwitterTrendApplication {
     }
 
     public static void main(String[] args) {
+
         SpringApplication.run(TwitterTrendApplication.class, args);
+
     }
 }
 
