@@ -140,7 +140,7 @@ _**Programing Model Core Concepts**_
 1. Spring cloud application can be run as fat jar or from ide or as typical spring boot Application
 
 2. The communication between applications follow pub-sub model i.e. data is broadcasted through topics
-   ![alt text](SpringCloudStreamPubSub.jpg)
+   ![alt text](SpringCloudMaPRStreamPubSub.jpg)
    
 3. To avoid  competing consumer relationship problem, Spring CLoud borrowed consumer group concept from Kafka, this means, 
    All groups which subscribe to a given destination receive a copy of published data, but only one member of each group 
