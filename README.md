@@ -1,7 +1,9 @@
 ## Spring Cloud Stream Using MapR Stream Topics
 
-[MapR (6.1)](https://mapr.com/blog/mapr-6-1-simplifies-the-development-of-ai-and-analytics-applications/)  latest provides support for Kafka Streams
-For a developer/architect,nothing more enthralling to try out disruptive, latest technology.
+[MapR (6.1)](https://mapr.com/blog/mapr-6-1-simplifies-the-development-of-ai-and-analytics-applications/)  latest 
+release provides support for Kafka Streams.
+
+For a developer/architect,nothing more enthralling to try out disruptive, latest technology like MapR.
 
 MapR-ES provides cutting edge streaming capabilities and [high performance + scalability](https://mapr.com/blog/kafka-vs-mapr-streams-why-mapr/) 
 as compared to Apache kafka. The latest release of MapR 6.1 provides Kafka Streaming support (eg KStream, KTable etc).
