@@ -22,7 +22,7 @@ prefixed with path to the stream.
 
 ![alt text](MapRStreamTopicVsKafka.jpg) 
 
-Hmm... I am struck. Does this means MapR Stream + Spring Cloud Stream will not work. The answer is no.
+Hmm... I am struck. Does this means MapR Stream + Spring Cloud Stream will not work. The answer is NO.
 
 Check out my project in Github -> [spring-cloud-kafka-twitter](https://github.com/mgorav/SpringCloudKafkaStreamTwitterTrend), which demonstrates:
 1. Integrate with MapR Steram topic(s)
