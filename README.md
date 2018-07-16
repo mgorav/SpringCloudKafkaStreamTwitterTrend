@@ -90,10 +90,18 @@ _**Programing Model Core Concepts**_
   
   1. _**Sink <<< CONSUMER**_
         Identifies the contract for the message consumer by providing the destination from which the message is consumed.
-  
+          
+        _**NOTE**_ 
+        
+        Consumer types available:
+        
+        a) Asynchronous - Message Driven
+        
+        b) Polled - Synchronous
+              
   2. _**Source <<< PRODUCER**_
         Identifies the contract for the message producer by providing the destination to which the produced message is sent.
-  
+      
   3. _**Processor**_
         Encapsulates both the sink and the source contracts by exposing two destinations that allow consumption and 
         production of messages.
@@ -123,21 +131,27 @@ _**Programing Model Core Concepts**_
      ```    
     
    
-_**NOTE:**_ 
+## Spring Cloud Core Concepts
 1. Spring cloud application can be run as fat jar or from ide or as typical spring boot Application
+
 2. The communication between applications follow pub-sub model i.e. data is broadcasted through topics
+   ![alt text](SpringCloudStreamPubSub.jpg)
+   
 3. To avoid  competing consumer relationship problem, Spring CLoud borrowed consumer group concept from Kafka, this means, 
    All groups which subscribe to a given destination receive a copy of published data, but only one member of each group 
    receives a given message from that destination.
+   ![alt text](SpringCloudStreamConsumerGroup.jpg)
+        
 4. Durability - Consumer group subscriptions are durable i.e. a binder implementation ensures that group subscriptions 
    are persistent, and once at least one subscription for a group has been created, the group will receive messages,
     even if they are sent while all applications in the group are stopped.
+    
 5. Partitioning: This feature provides abilitty to partition data between multiple instances of a given application and
    provides performance boost specially for stateful processing, ensuring related data is processed together. Using 
    partitioning, the communication medium (broker, topics ..) is viewed as being structurally split into multiple
    partitions. This means multiple producer applications send data to multiple consumer ensuring related (common) data
    characteristics are processed together in the same consumer instance.
-   
+   ![alt text](SpringCloudStreamPartition.jpg)
 ## Pre-requisite
 
 This project uses latest MapR sanbox 6.1. To install MapR follow steps specified in project - [SpringBootMapR](https://github.com/mgorav/SpringBootMapR)
