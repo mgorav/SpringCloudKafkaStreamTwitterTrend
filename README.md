@@ -9,7 +9,7 @@ MapR-ES provides cutting edge streaming capabilities which is [highly performana
 as compared to Apache kafka. 
 
 As a developer/architect, I would like to build streaming application which is agnostic of broker 
-(MapR Stream, Kafka ...). Spring Cloud Stream has cracked the problem being broker agnostic.
+(MapR Stream, Kafka ...). Spring Cloud Stream has cracked the problem of being broker agnostic.
 
 This sounds like a dream!!! 
 
