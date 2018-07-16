@@ -11,9 +11,9 @@ as compared to Apache kafka.
 As a developer/architect, I would like to build streaming application which is agnostic of broker 
 (MapR Stream, Kafka ...). Spring Cloud Stream has cracked the problem of being broker agnostic.
 
-This sounds like a dream!!! 
+I would say, MapR Stream and Spring Cloud Stream combination looks a like match made in heaven!!! 
 
-MapR Stream + Spring Cloud Stream = Match made in heavens = Developer productivity = High Performance & Scalability
+MapR Stream + Spring Cloud Stream = Developer productivity = High Performance & Scalability
 
 But when I started building MapR based streaming application using Spring Cloud Stream, I ran into trouble because
 in Kafka a topic is just an alphanumeric but in MapR a stream contain collection of topics and each topic name is 
