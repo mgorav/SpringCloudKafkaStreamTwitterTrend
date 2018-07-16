@@ -7,7 +7,9 @@ This is great!!! As a developer/architect, I would like to build streaming appli
 (MapR Stream, Kafka ...). 
 
 Spring Cloud Stream, provides superb abstraction over broker and takes way the burden of broker connectivity etc, away 
-from developer. This sounds great!!! 
+from developer. This sounds like a dream!!! 
+
+So, I can achieve my goal:
 
 MapR Stream + Spring Cloud Stream = Match made in heavens = Developer productivity = High Performance & Scalability
 
