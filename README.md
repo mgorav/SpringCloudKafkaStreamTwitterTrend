@@ -25,7 +25,7 @@ prefixed with path to the stream.
 Hmm... I am struck. Does this means MapR Stream + Spring Cloud Stream will not work. The answer is NO.
 
 Check out my project in Github -> [spring-cloud-kafka-twitter](https://github.com/mgorav/SpringCloudKafkaStreamTwitterTrend), which demonstrates:
-1. Integrate with MapR Steram topic(s)
+1. Integrate Spring Cloud Stream & MapR Stream topic(s) with zero boilerplate code
 2. Broker (MapR Stream) agnostic streaming application
 3. KStream , KTable (MapR Kafka Stream 1.1)
 4. Simplified Programing model - Source, Sink & Processor
