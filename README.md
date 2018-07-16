@@ -17,7 +17,7 @@ I would say,reading documentation atleast, MapR Stream and Spring Cloud Stream c
 MapR Stream + Spring Cloud Stream = Developer productivity = High Performance & Scalability
 
 Since products/fuctionalities are not build with diagrams & documentations, I started building MapR based streaming application using Spring Cloud Stream, I ran into trouble because
-in Kafka a topic is just an alphanumeric but in MapR a stream contain collection of topics and each topic name is 
+in Kafka a topic is just an alphanumeric but in MapR a stream is a collection of topics and each topic name is 
 prefixed with path to the stream.
 
 ![alt text](MapRStreamTopicVsKafka.jpg) 
