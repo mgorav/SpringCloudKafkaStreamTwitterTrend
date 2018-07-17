@@ -44,9 +44,10 @@ external brokers using middleware-specific Binders implementations.
 
 ![alt text](SpringCloudStreamingApp.jpg) 
 
-_**Programing Model Core Concepts**_
-1. Destination Binders
-    _An abstraction responsible for roviding integration with the external messaging systems._
+## Spring Cloud Stream Core Concepts
+1. **Destination Binders**
+
+    _An abstraction responsible for providing integration with the external messaging systems._
     ```java
     
     @Component
@@ -68,13 +69,14 @@ _**Programing Model Core Concepts**_
 
     ```
     
-2. Destination Bindings
+2. **Destination Bindings**
+
     _An abstraction, which bridges gap between the external messaging systems and application provided Producers and 
-    Consumers of messages (created by the Destination Binders) eg @EnableBinding._
+    Consumers of messages (created by the Destination Binders) eg @EnableBinding.
     This annotation can take one or more interface classes as parameters. The parameters are referred to as bindings, 
     and they contain methods representing bindable components. These components are typically message channels 
     for channel-based binders (such as MapR Stream, Kafka, and others). However other types of bindings can provide 
-    support for the native features of the corresponding technology. For example MapR Stream ,Kafka Streams binder 
+    support for the native features of the corresponding technology. For example MapR Stream ,Kafka Streams binder_ 
     
     ```java
        @EnableBinding(TweetMessageBinding.class)
@@ -84,13 +86,38 @@ _**Programing Model Core Concepts**_
     
        }
     ```
-    
  
+ ### Spring Cloud Stream Key Features  
+    
+ 1. Spring cloud application can be run as fat jar or from ide or as typical spring boot Application
+ 
+ 2. The communication between applications follow pub-sub model i.e. data is broadcasted through topics
+    ![alt text](SpringCloudMaPRStreamPubSub.jpg)
+    
+ 3. To avoid  competing consumer relationship problem, Spring CLoud borrowed consumer group concept from Kafka, this means, 
+    All groups which subscribe to a given destination receive a copy of published data, but only one member of each group 
+    receives a given message from that destination.
+    ![alt text](SpringCloudStreamConsumerGroup.jpg)
+         
+ 4. Durability - Consumer group subscriptions are durable i.e. a binder implementation ensures that group subscriptions 
+    are persistent, and once at least one subscription for a group has been created, the group will receive messages,
+     even if they are sent while all applications in the group are stopped.
+     
+ 5. Partitioning: This feature provides abilitty to partition data between multiple instances of a given application and
+    provides performance boost specially for stateful processing, ensuring related data is processed together. Using 
+    partitioning, the communication medium (broker, topics ..) is viewed as being structurally split into multiple
+    partitions. This means multiple producer applications send data to multiple consumer ensuring related (common) data
+    characteristics are processed together in the same consumer instance.
+    ![alt text](SpringCloudStreamPartition.jpg)
 
-3. Message
+3. **Message**
+
    The canonical data structure abstraction used by producers and consumers to communicate with Destination Binders 
    (and thus other applications via external messaging systems).
    
+  
+## Programing Model
+  
   The message exchange contracts is specified in binding interface, which includes: 
   
   1. _**Sink <<< CONSUMER**_
@@ -98,7 +125,7 @@ _**Programing Model Core Concepts**_
           
         _**NOTE**_ 
         
-        Consumer types available:
+        _Consumer types available:_
         
         a) Asynchronous - Message Driven
         
@@ -136,27 +163,6 @@ _**Programing Model Core Concepts**_
      ```    
     
    
-## Spring Cloud Core Concepts
-1. Spring cloud application can be run as fat jar or from ide or as typical spring boot Application
-
-2. The communication between applications follow pub-sub model i.e. data is broadcasted through topics
-   ![alt text](SpringCloudMaPRStreamPubSub.jpg)
-   
-3. To avoid  competing consumer relationship problem, Spring CLoud borrowed consumer group concept from Kafka, this means, 
-   All groups which subscribe to a given destination receive a copy of published data, but only one member of each group 
-   receives a given message from that destination.
-   ![alt text](SpringCloudStreamConsumerGroup.jpg)
-        
-4. Durability - Consumer group subscriptions are durable i.e. a binder implementation ensures that group subscriptions 
-   are persistent, and once at least one subscription for a group has been created, the group will receive messages,
-    even if they are sent while all applications in the group are stopped.
-    
-5. Partitioning: This feature provides abilitty to partition data between multiple instances of a given application and
-   provides performance boost specially for stateful processing, ensuring related data is processed together. Using 
-   partitioning, the communication medium (broker, topics ..) is viewed as being structurally split into multiple
-   partitions. This means multiple producer applications send data to multiple consumer ensuring related (common) data
-   characteristics are processed together in the same consumer instance.
-   ![alt text](SpringCloudStreamPartition.jpg)
 ## Pre-requisite
 
 This project uses latest MapR sanbox 6.1. To install MapR follow steps specified in project - [SpringBootMapR](https://github.com/mgorav/SpringBootMapR)
