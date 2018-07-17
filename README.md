@@ -44,6 +44,8 @@ external brokers using middleware-specific Binders implementations.
 
 ![alt text](SpringCloudStreamingApp.jpg) 
 
+Below are my notes, while learning Spring Cloud Stream.
+
  ### Spring Cloud Stream Key Features  
     
  1. **Fat Jar**
