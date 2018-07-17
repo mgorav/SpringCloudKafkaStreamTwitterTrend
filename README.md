@@ -12,9 +12,9 @@ As a developer/architect, I would like to build streaming application which is a
 (MapR Stream, Kafka ...) and simple programing model. Spring Cloud Stream has cracked the problem of being broker agnostic
 and provides a simple programing model, which let's developer concentrate on functionality.
 
-I would say,reading documentation atleast, MapR Stream and Spring Cloud Stream combination, is a match made in heaven!!! 
+I would say,reading documentation atleast, MapR Stream and Spring Cloud Stream combination - **_"A match made in heaven!!!"_** 
 
-MapR Stream + Spring Cloud Stream = Developer productivity = High Performance & Scalability
+**_MapR Stream + Spring Cloud Stream = Developer productivity = High Performance & Scalability_**
 
 Since products/fuctionalities are not build with diagrams & documentations, I started building MapR based streaming application using Spring Cloud Stream, I ran into trouble because
 in Kafka a topic is just an alphanumeric but in MapR a stream is a collection of topics and each topic name is 
