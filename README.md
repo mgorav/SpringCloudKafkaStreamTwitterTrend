@@ -44,6 +44,35 @@ external brokers using middleware-specific Binders implementations.
 
 ![alt text](SpringCloudStreamingApp.jpg) 
 
+ ### Spring Cloud Stream Key Features  
+    
+ 1. Spring cloud application can be run as fat jar or from ide or as typical spring boot Application
+ 
+ 2. The communication between applications follow pub-sub model i.e. data is broadcasted through topics
+    ![alt text](SpringCloudMaPRStreamPubSub.jpg)
+    
+ 3. To avoid  competing consumer relationship problem, Spring CLoud borrowed consumer group concept from Kafka, this means, 
+    All groups which subscribe to a given destination receive a copy of published data, but only one member of each group 
+    receives a given message from that destination.
+    ![alt text](SpringCloudStreamConsumerGroup.jpg)
+         
+ 4. Durability - Consumer group subscriptions are durable i.e. a binder implementation ensures that group subscriptions 
+    are persistent, and once at least one subscription for a group has been created, the group will receive messages,
+     even if they are sent while all applications in the group are stopped.
+     
+ 5. Partitioning: This feature provides abilitty to partition data between multiple instances of a given application and
+    provides performance boost specially for stateful processing, ensuring related data is processed together. Using 
+    partitioning, the communication medium (broker, topics ..) is viewed as being structurally split into multiple
+    partitions. This means multiple producer applications send data to multiple consumer ensuring related (common) data
+    characteristics are processed together in the same consumer instance.
+    ![alt text](SpringCloudStreamPartition.jpg)
+
+3. **Message**
+
+   The canonical data structure abstraction used by producers and consumers to communicate with Destination Binders 
+   (and thus other applications via external messaging systems).
+   
+
 ## Spring Cloud Stream Core Concepts
 1. **Destination Binders**
 
@@ -86,37 +115,9 @@ external brokers using middleware-specific Binders implementations.
     
        }
     ```
- 
- ### Spring Cloud Stream Key Features  
-    
- 1. Spring cloud application can be run as fat jar or from ide or as typical spring boot Application
- 
- 2. The communication between applications follow pub-sub model i.e. data is broadcasted through topics
-    ![alt text](SpringCloudMaPRStreamPubSub.jpg)
-    
- 3. To avoid  competing consumer relationship problem, Spring CLoud borrowed consumer group concept from Kafka, this means, 
-    All groups which subscribe to a given destination receive a copy of published data, but only one member of each group 
-    receives a given message from that destination.
-    ![alt text](SpringCloudStreamConsumerGroup.jpg)
-         
- 4. Durability - Consumer group subscriptions are durable i.e. a binder implementation ensures that group subscriptions 
-    are persistent, and once at least one subscription for a group has been created, the group will receive messages,
-     even if they are sent while all applications in the group are stopped.
-     
- 5. Partitioning: This feature provides abilitty to partition data between multiple instances of a given application and
-    provides performance boost specially for stateful processing, ensuring related data is processed together. Using 
-    partitioning, the communication medium (broker, topics ..) is viewed as being structurally split into multiple
-    partitions. This means multiple producer applications send data to multiple consumer ensuring related (common) data
-    characteristics are processed together in the same consumer instance.
-    ![alt text](SpringCloudStreamPartition.jpg)
-
-3. **Message**
-
-   The canonical data structure abstraction used by producers and consumers to communicate with Destination Binders 
-   (and thus other applications via external messaging systems).
    
   
-## Programing Model
+## Spring Cloud Stream Programing Model
   
   The message exchange contracts is specified in binding interface, which includes: 
   
