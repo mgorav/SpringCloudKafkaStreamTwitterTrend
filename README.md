@@ -178,7 +178,7 @@ Below are my notes, while learning Spring Cloud Stream.
    
 ## Pre-requisite
 
-This project uses latest MapR sanbox 6.1. To install MapR follow steps specified in project - [SpringBootMapR](https://github.com/mgorav/SpringBootMapR)
+This project uses latest MapR sanbox. To install MapR follow steps specified in project - [SpringBootMapR](https://github.com/mgorav/SpringBootMapR)
 
 To install MapR Kafka issue following commands in the MapR sandbox docker container:
 
